@@ -10,8 +10,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.muyihan.artcms.common.ImageLoadTool;
-import com.muyihan.artcms.common.WeakRefHander;
 import com.muyihan.artcms.guide.GuideActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
