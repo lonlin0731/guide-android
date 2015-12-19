@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.muyihan.artcms.common.ImageLoadTool;
 import com.muyihan.artcms.common.WeakRefHander;
 import com.muyihan.artcms.guide.GuideActivity;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 
 import butterknife.Bind;
@@ -33,8 +34,7 @@ public class AppStart extends AppCompatActivity implements Handler.Callback {
     View foreMask;
 
     Animation aniStart ;
-    ImageLoadTool imageLoadTool = new ImageLoadTool();
-    WeakRefHander mWeakRefHandler;
+    Handler mHandler;
 
 
     @Override
@@ -49,8 +49,8 @@ public class AppStart extends AppCompatActivity implements Handler.Callback {
 
     void init()
     {
-        mWeakRefHandler = new WeakRefHander(this);
-        aniStart = AnimationUtils.loadAnimation(AppStart.this, R.anim.start);
+        mHandler = new Handler(this);
+        aniStart = AnimationUtils.loadAnimation(this, R.anim.start);
 
         settingBackground();
 
@@ -61,7 +61,8 @@ public class AppStart extends AppCompatActivity implements Handler.Callback {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                mWeakRefHandler.start(HANDLER_MESSAGE_NEXT_ACTIVITY, 500);
+                mHandler.removeMessages(0);
+                mHandler.sendEmptyMessageDelayed(HANDLER_MESSAGE_NEXT_ACTIVITY, 500);
             }
 
             @Override
@@ -69,13 +70,14 @@ public class AppStart extends AppCompatActivity implements Handler.Callback {
             }
         });
 
-        mWeakRefHandler.start(HANDLER_MESSAGE_ANIMATION, 900);
+        mHandler.removeMessages(0);
+        mHandler.sendEmptyMessageDelayed(HANDLER_MESSAGE_ANIMATION, 900);
     }
 
     private void settingBackground()
     {
         ImageSize imageSize = new ImageSize(AppContext.sWidthPix, AppContext.sHeightPix);
-        image.setImageBitmap(imageLoadTool.imageLoader.loadImageSync("drawable://" + R.drawable.entrance, imageSize));
+        image.setImageBitmap(ImageLoader.getInstance().loadImageSync("drawable://" + R.drawable.entrance, imageSize));
     }
 
     @Override
