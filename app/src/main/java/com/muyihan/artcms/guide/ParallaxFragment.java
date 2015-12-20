@@ -12,7 +12,7 @@ import com.prolificinteractive.parallaxpager.ParallaxContainer;
 
 
 /**
- * Created by chaochen on 14-9-22.
+ * Created by Administrator on 15-12-11.
  */
 
 public class ParallaxFragment extends Fragment implements ViewPager.OnPageChangeListener {
@@ -20,8 +20,7 @@ public class ParallaxFragment extends Fragment implements ViewPager.OnPageChange
     IndicatorView mIndicatorView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_parallax, container, false);
         mIndicatorView = (IndicatorView) view.findViewById(R.id.indicatorView);
 

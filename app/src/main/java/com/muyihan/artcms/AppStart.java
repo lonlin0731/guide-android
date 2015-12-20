@@ -108,7 +108,6 @@ public class AppStart extends AppCompatActivity implements Handler.Callback {
         startActivity(intent);
         overridePendingTransition(R.anim.scroll_in, R.anim.scroll_out);
 
-        //--UnreadNotify.update(this);
         finish();
     }
 }
